@@ -3,6 +3,14 @@ from forms import RegisterForm, LoginForm, ExpenseForm
 from werkzeug.security import generate_password_hash, check_password_hash 
 import sqlite3
 
+import os
+
+DATABASE = os.path.join(os.path.dirname(__file__), "database.db") 
+print("DATABASE PATH:", DATABASE)
+
+def get_db_connection():
+    return sqlite3.connect(DATABASE)
+
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "financeflow-secret-key"
 
@@ -13,7 +21,7 @@ def home():
 
     if session.get("user_id"):
 
-        connection = sqlite3.connect("database.db")
+        connection = get_db_connection()
         cursor = connection.cursor()
 
         # ---------------- Financial Summary ----------------
@@ -129,7 +137,7 @@ def login():
 
     if form.validate_on_submit():
 
-        connection = sqlite3.connect("database.db")
+        connection = get_db_connection()
         cursor = connection.cursor()
 
         cursor.execute(
@@ -162,7 +170,7 @@ def register():
         connection = None
 
         try:
-            connection = sqlite3.connect("database.db")
+            connection = get_db_connection()
             cursor = connection.cursor()
 
             cursor.execute("""
@@ -202,7 +210,7 @@ def add_expense():
 
     if form.validate_on_submit():
 
-        connection = sqlite3.connect("database.db")
+        connection = get_db_connection()
         cursor = connection.cursor()
 
         cursor.execute("""
@@ -226,7 +234,7 @@ def add_expense():
 @app.route("/delete-expense/<int:expense_id>")
 def delete_expense(expense_id):
 
-    connection = sqlite3.connect("database.db")
+    connection = get_db_connection()
     cursor = connection.cursor()
 
     cursor.execute("""
@@ -242,7 +250,7 @@ def delete_expense(expense_id):
 @app.route("/edit-expense/<int:expense_id>", methods=["GET", "POST"])
 def edit_expense(expense_id):
 
-    connection = sqlite3.connect("database.db")
+    connection = get_db_connection()
     cursor = connection.cursor()
 
     if request.method == "POST":
@@ -292,7 +300,7 @@ def set_budget():
 
         budget = request.form["budget"]
 
-        connection = sqlite3.connect("database.db")
+        connection = get_db_connection()
         cursor = connection.cursor()
 
         cursor.execute("""
