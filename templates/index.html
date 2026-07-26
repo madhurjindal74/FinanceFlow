@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="container py-5">
+
+<div class="row align-items-center">
+
+    <div class="col-lg-6">
+
+        <span class="badge rounded-pill bg-dark px-3 py-2 mb-3">
+    🚀 Personal Finance Tracker
+</span>
+
+        <h1 class="display-3 fw-bold">
+            Take Control of Your Finances.
+        </h1>
+
+        <p class="lead mt-4 text-secondary">
+            Track expenses, manage monthly budgets, and visualize your spending with an intuitive dashboard built for smarter financial decisions.
+        </p>
+
+        <div class="mt-5">
+
+            <a href="{{ url_for('register') }}"
+               class="btn btn-primary btn-lg rounded-pill px-5 me-3">
+                Get Started
+            </a>
+
+            <a href="{{ url_for('login') }}"
+               class="btn btn-outline-dark btn-lg rounded-pill px-5">
+                Login
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="col-lg-6 mt-5 mt-lg-0">
+
+        <div class="card shadow-lg border-0 rounded-4 p-4">
+
+            <h3 class="mb-4">
+                Why FinanceFlow?
+            </h3>
+
+            <div class="mb-4">
+                <h5>📊 Interactive Analytics</h5>
+                <p class="text-secondary mb-0">
+                    Visualize your expenses with charts and spending insights.
+                </p>
+            </div>
+
+            <div class="mb-4">
+                <h5>💰 Budget Tracking</h5>
+                <p class="text-secondary mb-0">
+                    Set a monthly budget and instantly see how much you have left.
+                </p>
+            </div>
+
+            <div class="mb-4">
+                <h5>📝 Expense Management</h5>
+                <p class="text-secondary mb-0">
+                    Add, edit and delete expenses in seconds.
+                </p>
+            </div>
+
+            <div>
+                <h5>🔒 Secure Accounts</h5>
+                <p class="text-secondary mb-0">
+                    Every user's financial data stays separate and secure.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+{% endblock %}

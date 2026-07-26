@@ -1,0 +1,54 @@
+body{
+    background:#f5f7fb;
+    font-family:Inter,Arial,sans-serif;
+}
+
+.navbar{
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+.card{
+    border:none;
+    border-radius:20px;
+    transition:.25s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 14px 30px rgba(0,0,0,.12);
+}
+
+.btn{
+    border-radius:12px;
+    font-weight:600;
+}
+
+.table{
+    margin-bottom:0;
+}
+
+.table thead{
+    background:#f8f9fa;
+}
+
+.table td,
+.table th{
+    vertical-align:middle;
+}
+
+.badge{
+    border-radius:8px;
+    padding:8px 12px;
+}
+
+h1{
+    font-weight:700;
+}
+
+h2{
+    font-weight:700;
+}
+
+canvas{
+    max-height:320px;
+}
