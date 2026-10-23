@@ -3,10 +3,9 @@ from forms import RegisterForm, LoginForm, ExpenseForm
 from werkzeug.security import generate_password_hash, check_password_hash 
 import sqlite3
 
-import os
+from init_db import DATABASE, init_db
 
-DATABASE = os.path.join(os.path.dirname(__file__), "database.db") 
-print("DATABASE PATH:", DATABASE)
+init_db()
 
 def get_db_connection():
     return sqlite3.connect(DATABASE)
@@ -40,7 +39,7 @@ def home():
            WHERE id = ?
         """, (session["user_id"],))
 
-        budget = cursor.fetchone()[0]
+        budget = cursor.fetchone()[0] or 0
         if total_expenses is None:
          total_expenses = 0
         budget_left = budget - total_expenses
